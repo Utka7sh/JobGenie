@@ -1,0 +1,96 @@
+:root {
+  --bg-color: #f4f5f7;         // Soft neutral background
+  --text-color: #1e293b;       // Slate 800
+  --card-bg: #ffffff;          // White but not harsh
+  --primary: #2563eb;          // Blue 600
+  --accent-hover: #dbeafe;     // Blue 100
+}
+
+.dark-theme {
+  --bg-color: #121212;         // True dark background
+  --text-color: #e2e8f0;       // Slate 100
+  --card-bg: #1e1e1e;          // Almost black card
+  --primary: #60a5fa;          // Blue 400
+  --accent-hover: #1e40af;     // Blue 900
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 960px;
+  margin: auto;
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+}
+
+h1, h2 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+button {
+  margin-top: 1rem;
+  margin-right: 1rem;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--accent-hover);
+    color: var(--text-color);
+  }
+}
+
+.platform-buttons {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.job-results {
+  margin-top: 2rem;
+}
+
+.job-card {
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  background-color: var(--card-bg);
+  border-left: 4px solid var(--primary);
+  padding: 1rem;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+}

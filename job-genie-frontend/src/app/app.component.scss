@@ -1,0 +1,50 @@
+.app-wrapper {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--card-bg);
+  border-bottom: 1px solid #ccc;
+}
+
+.app-wrapper.dark-theme .app-header {
+  background-color: var(--card-bg);
+  border-bottom: 1px solid #333;
+}
+
+.app-header button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--primary);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.app-header button:hover {
+  background-color: var(--accent-hover);
+  color: var(--text-color);
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}

@@ -1,0 +1,20 @@
+<!-- app.component.html -->
+<div class="app-wrapper" [class.dark-theme]="isDarkTheme">
+  <!-- Header with theme toggle -->
+  <header class="app-header">
+    <h1>Job Finder</h1>
+    <button (click)="toggleTheme()">
+      {{ isDarkTheme ? '🌙 Dark Mode' : '☀️ Light Mode' }}
+    </button>
+  </header>
+
+  <!-- Main content rendered by router -->
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+
+  <!-- Optional Footer -->
+  <footer class="app-footer">
+    <p>&copy; 2025 JobFinder. All rights reserved.</p>
+  </footer>
+</div>

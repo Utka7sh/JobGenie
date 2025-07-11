@@ -1,0 +1,91 @@
+<form [formGroup]="jobForm" (ngSubmit)="onNext()" class="job-form">
+  <mat-form-field appearance="fill">
+    <mat-label>Job Title / Keywords</mat-label>
+    <input matInput formControlName="keyword" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Location</mat-label>
+    <input matInput formControlName="location" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Date Since Posted</mat-label>
+    <mat-select formControlName="dateSincePosted" required>
+      <mat-option value="24hr">Last 24 hours</mat-option>
+      <mat-option value="past week">Past Week</mat-option>
+      <mat-option value="past month">Past Month</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Salary (optional)</mat-label>
+    <input matInput formControlName="salary" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Experience Level</mat-label>
+    <mat-select formControlName="experienceLevel" required>
+      <mat-option value="internship">Internship</mat-option>
+      <mat-option value="entry level">Entry Level</mat-option>
+      <mat-option value="associate">Associate</mat-option>
+      <mat-option value="mid-senior level">Mid-Senior</mat-option>
+      <mat-option value="director">Director</mat-option>
+      <mat-option value="executive">Executive</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Sort By</mat-label>
+    <mat-select formControlName="sortBy">
+      <mat-option value="relevant">Relevant</mat-option>
+      <mat-option value="recent">Recent</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Limit</mat-label>
+    <input type="number" matInput formControlName="limit" />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="!jobForm.valid">Next</button>
+</form>
+
+<div *ngIf="showPlatforms" class="platform-buttons">
+  <h3>Platform:</h3>
+  <button
+    mat-stroked-button
+    color="accent"
+    *ngFor="let p of platforms"
+    (click)="fetchJobs(p)"
+  >
+    {{ p }}
+  </button>
+</div>
+
+<!-- Results -->
+<div *ngIf="jobResults.length > 0" class="job-results">
+  <h3>Job Results</h3>
+  <mat-card *ngFor="let job of jobResults" class="job-card">
+    <mat-card-title>{{ job.title }}</mat-card-title>
+    <mat-card-subtitle>{{ job.company }} — {{ job.location }}</mat-card-subtitle>
+    <p><strong>Posted:</strong> {{ job.datePosted }}</p>
+
+    <button
+      mat-raised-button
+      color="{{ visitedJobs.has(job.url) ? 'primary' : 'accent' }}"
+      (click)="markAsVisited(job.url)"
+    >
+      {{ visitedJobs.has(job.url) ? 'Visited' : 'Apply' }}
+    </button>
+
+    <!-- ✅ FIXED: Pass the job object -->
+    <button mat-stroked-button (click)="generateReferral(job)">
+      Generate Message
+    </button>
+
+    <button mat-stroked-button (click)="generateCoverLetter(job)">
+      Create Letter
+    </button>
+  </mat-card>
+</div>
